@@ -1,0 +1,8 @@
+inspiration for style:
+    https://airwptheme.com/demo/2021/04/05/sample-gutenberg-post/
+template structure:
+    https://github.com/automattic/_s bez inc foldera, napraviti template za sve arhive, u functions php staviit usefull snippets
+    tipa generiranje menija, generiranje sidebara, add-support za thumbnail, gutenberg itd.
+helper funkcije staviti u functions.php https://github.com/Automattic/_s/blob/master/inc/woocommerce.php kao primjerice ove
+- dodati i za dizejblanje komentara..
+- koristiti css varijable, kasnije možda sass?
