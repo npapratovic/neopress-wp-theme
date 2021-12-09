@@ -1,0 +1,404 @@
+/*
+Theme Name: neopress
+Theme URI: https://neomedia.hr/
+Author: Nikola Papratovic
+Author URI: https://neomedia.hr/
+Description: neopress starter wp theme for websites and webshops
+Tags: responsive, starter wp theme
+Version: 0.1-alpha
+Requires at least: 5.0
+Tested up to: 5.4
+Requires PHP: 7.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: neopress
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+/*
+
+table of contents:
+1) CSS RESET
+2) GRID SYSTEM
+3) HELPERS
+4) TYPOGRAPHY
+5) CUSTOM STYLES FOR THIS PROJECT
+6) RESPONSIVE
+
+*/
+/*
+NOTE: style css consists of several chapters, first one is of course CSS reset
+I choose "The New CSS Reset from Elad Shechter" instead od older css reset from meyerweb.com
+"because the new one is simpler and more sophisticated than before"*/
+/*** The new CSS Reset - version 1.4.2 (last updated 30.11.2021) ***/
+/*source: https://raw.githubusercontent.com/elad2412/the-new-css-reset/main/css/reset.css*/
+/*
+    Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+    - The "symbol *" part is to solve Firefox SVG sprite bug
+ */
+*:where(:not(iframe, canvas, img, svg, video):not(svg *, symbol *)) {
+    all: unset;
+    display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol, ul, menu {
+    list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+    max-width: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+    border-collapse: collapse;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+    white-space: revert;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly. */
+:where([contenteditable]){
+    -moz-user-modify: read-write;
+    -webkit-user-modify: read-write;
+    overflow-wrap: break-word;
+    -webkit-line-break: after-white-space;
+}
+/*ater css reset goes universal css*/
+/* ==== GRID SYSTEM ==== */
+/*inspiration:
+*** SIMPLE GRID
+*** (C) ZACH COLE 2016
+TODO: poraditi na dimenzijama, veću podršku za 2k i 4k monitore
+*/
+.container {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.row {
+    position: relative;
+    width: 100%;
+}
+
+.row [class^="col"] {
+    float: left;
+    margin: 0.5rem 2%;
+    min-height: 0.125rem;
+}
+
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12 {
+    width: 96%;
+}
+
+.col-1-sm {
+    width: 4.33%;
+}
+
+.col-2-sm {
+    width: 12.66%;
+}
+
+.col-3-sm {
+    width: 21%;
+}
+
+.col-4-sm {
+    width: 29.33%;
+}
+
+.col-5-sm {
+    width: 37.66%;
+}
+
+.col-6-sm {
+    width: 46%;
+}
+
+.col-7-sm {
+    width: 54.33%;
+}
+
+.col-8-sm {
+    width: 62.66%;
+}
+
+.col-9-sm {
+    width: 71%;
+}
+
+.col-10-sm {
+    width: 79.33%;
+}
+
+.col-11-sm {
+    width: 87.66%;
+}
+
+.col-12-sm {
+    width: 96%;
+}
+
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.hidden-sm {
+    display: none;
+}
+
+@media only screen and (min-width: 33.75em) {
+
+    /* 540px */
+    .container {
+        width: 80%;
+    }
+}
+
+@media only screen and (min-width: 45em) {
+
+    /* 720px */
+    .col-1 {
+        width: 4.33%;
+    }
+
+    .col-2 {
+        width: 12.66%;
+    }
+
+    .col-3 {
+        width: 21%;
+    }
+
+    .col-4 {
+        width: 29.33%;
+    }
+
+    .col-5 {
+        width: 37.66%;
+    }
+
+    .col-6 {
+        width: 46%;
+    }
+
+    .col-7 {
+        width: 54.33%;
+    }
+
+    .col-8 {
+        width: 62.66%;
+    }
+
+    .col-9 {
+        width: 71%;
+    }
+
+    .col-10 {
+        width: 79.33%;
+    }
+
+    .col-11 {
+        width: 87.66%;
+    }
+
+    .col-12 {
+        width: 96%;
+    }
+
+    .hidden-sm {
+        display: block;
+    }
+}
+
+@media only screen and (min-width: 60em) {
+
+    /* 960px */
+    .container {
+        width: 75%;
+        max-width: 60rem;
+    }
+}
+
+@media only screen and (min-width: 80em) {
+
+    /* 960px */
+    .container {
+        width: 75%;
+        max-width: 80rem;
+    }
+}
+
+@media only screen and (min-width: 100em) {
+
+    /* 960px */
+    .container {
+        width: 75%;
+        max-width: 100rem;
+    }
+}
+
+/*HELPERS*/
+a:hover {
+    text-decoration: underline;
+}
+strong {
+    font-weight: 700;
+}
+em {
+    font-style: italic;
+}
+.responsive {
+    width: 100%;
+    height: auto;
+}
+.left {
+    text-align: left;
+}
+.right {
+    text-align: right;
+}
+.center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.float-left {
+    float: left;
+}
+.float-right {
+    float: right;
+}
+.justify {
+    text-align: justify;
+}
+
+/* TYPOGRAPHY */
+/*TODO: doraditi odnose rem visina radi čitljivosti*/
+/*radimo best-practice kod fontova, podesimo osnoven vrijednosti, zatim sa rem veličinama podešavamo odnose,
+no kasnije u custom css-u možemo podesiti specifične veličine fontova ili odnosa*/
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+@media screen and (min-width:768px){
+    body {
+        font-size:16px;
+    }
+}
+
+@media screen and (min-width:1024px){
+    body {
+        font-size:18px;
+    }
+}
+
+@media screen and (min-width:1200px){
+    body {
+        font-size:20px;
+    }
+}
+
+@media screen and (min-width:1600px){
+    body {
+        font-size:22px;
+    }
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.375rem;
+}
+
+h4 {
+    font-size: 1.125rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 0.875rem;
+}
+
+p {
+    font-size: 1.125rem;
+    font-weight: 200;
+    line-height: 1.8;
+}
+
+
+/*CUSTOM STYLES FOR THIS PROJECT*/
+/*koristimo css varijable*/
+:root {
+    --yellow: #FFD977;
+
+    --brown: #ba400e;
+
+    --orange: #ffc4a1;
+
+    --green: #f0f9f9;
+
+    --lightorange: #ffc4a1;
+
+    --white: #FFFFFF;
+
+    /*frank ruhl libre*/
+    --fontprimary: 'Frank Ruhl Libre', serif;
+    /*roboto*/
+    --fontsecondary: 'Roboto', sans-serif;
+}
+
+body {
+    font-family: var(--fontsecondary);
+    line-height: 1.5rem;
+}
+
+/*RESPONSIVE*/
+/*radimo mobile-first kod, tako da kasnije pišemo css samo za razlike na većim rezolucijama*/
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 37.5em) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}
