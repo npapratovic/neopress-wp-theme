@@ -5,7 +5,7 @@ Author: Nikola Papratovic
 Author URI: https://neomedia.hr/
 Description: neopress starter wp theme for websites and webshops
 Tags: responsive, starter wp theme
-Version: 0.1-alpha
+Version: 0.2-alpha
 Requires at least: 5.0
 Tested up to: 5.4
 Requires PHP: 7.0
@@ -81,12 +81,13 @@ textarea {
 /*inspiration:
 *** SIMPLE GRID
 *** (C) ZACH COLE 2016
-TODO: poraditi na dimenzijama, veću podršku za 2k i 4k monitore
 */
 .container {
-    width: 90%;
-    margin-left: auto;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
     margin-right: auto;
+    margin-left: auto;
 }
 
 .row {
@@ -112,7 +113,10 @@ TODO: poraditi na dimenzijama, veću podršku za 2k i 4k monitore
 .col-10,
 .col-11,
 .col-12 {
-    width: 96%;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
 .col-1-sm {
@@ -173,63 +177,67 @@ TODO: poraditi na dimenzijama, veću podršku za 2k i 4k monitore
     display: none;
 }
 
-@media only screen and (min-width: 33.75em) {
+@media only screen and (min-width: 576px) {
 
     /* 540px */
     .container {
-        width: 80%;
+        max-width: 540px;
     }
 }
 
-@media only screen and (min-width: 45em) {
+@media only screen and (min-width: 768px) {
 
     /* 720px */
+    .container {
+        max-width: 720px;
+    }
+
     .col-1 {
-        width: 4.33%;
+        max-width: 4.33%;
     }
 
     .col-2 {
-        width: 12.66%;
+        max-width: 12.66%;
     }
 
     .col-3 {
-        width: 21%;
+        max-width: 21%;
     }
 
     .col-4 {
-        width: 29.33%;
+        max-width: 29.33%;
     }
 
     .col-5 {
-        width: 37.66%;
+        max-width: 37.66%;
     }
 
     .col-6 {
-        width: 46%;
+        max-width: 46%;
     }
 
     .col-7 {
-        width: 54.33%;
+        max-width: 54.33%;
     }
 
     .col-8 {
-        width: 62.66%;
+        max-width: 62.66%;
     }
 
     .col-9 {
-        width: 71%;
+        max-width: 71%;
     }
 
     .col-10 {
-        width: 79.33%;
+        max-width: 79.33%;
     }
 
     .col-11 {
-        width: 87.66%;
+        max-width: 87.66%;
     }
 
     .col-12 {
-        width: 96%;
+        max-width: 96%;
     }
 
     .hidden-sm {
@@ -237,43 +245,70 @@ TODO: poraditi na dimenzijama, veću podršku za 2k i 4k monitore
     }
 }
 
-@media only screen and (min-width: 60em) {
+@media only screen and (min-width: 992px) {
 
-    /* 960px */
+    /* 992px */
     .container {
-        width: 75%;
-        max-width: 60rem;
+        max-width: 960px;
     }
 }
 
-@media only screen and (min-width: 80em) {
+@media only screen and (min-width: 1200px) {
 
-    /* 960px */
+    /* 1200px */
     .container {
-        width: 75%;
-        max-width: 80rem;
+        max-width: 1140px;
     }
 }
 
-@media only screen and (min-width: 100em) {
+@media only screen and (min-width: 1600px) {
 
-    /* 960px */
+    /* 1600px */
     .container {
-        width: 75%;
-        max-width: 100rem;
+        max-width: 1440px;
     }
 }
 
 /*HELPERS*/
+a {
+    text-decoration: none;
+    background-color: transparent;
+}
+
 a:hover {
     text-decoration: underline;
 }
+
+a:not([href]):not([tabindex]),
+a:not([href]):not([tabindex]):focus,
+a:not([href]):not([tabindex]):hover {
+    color: inherit;
+    text-decoration:none;
+}
+
+a:not([href]):not([tabindex]):focus {
+    outline: 0
+}
+
 strong {
     font-weight: 700;
 }
 em {
     font-style: italic;
 }
+figure {
+    margin: 0 0 1rem;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
 .responsive {
     width: 100%;
     height: auto;
@@ -300,13 +335,17 @@ em {
 }
 
 /* TYPOGRAPHY */
-/*TODO: doraditi odnose rem visina radi čitljivosti*/
 /*radimo best-practice kod fontova, podesimo osnoven vrijednosti, zatim sa rem veličinama podešavamo odnose,
 no kasnije u custom css-u možemo podesiti specifične veličine fontova ili odnosa*/
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 1.5;
+    margin: 0;
+    font-weight: 400;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
 }
 @media screen and (min-width:768px){
     body {
@@ -332,34 +371,67 @@ body {
     }
 }
 
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 0.5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+}
+
+.h1,
 h1 {
     font-size: 2.5rem;
 }
 
+.h2,
 h2 {
     font-size: 2rem;
 }
 
+.h3,
 h3 {
-    font-size: 1.375rem;
+    font-size: 1.75rem;
 }
 
+.h4,
 h4 {
-    font-size: 1.125rem;
+    font-size: 1.5rem;
 }
 
+.h5,
 h5 {
+    font-size: 1.25rem;
+}
+
+.h6,
+h6 {
     font-size: 1rem;
 }
 
-h6 {
-    font-size: 0.875rem;
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, .1)
 }
 
+
 p {
-    font-size: 1.125rem;
-    font-weight: 200;
+    font-size: 18px;
     line-height: 1.8;
+    color: #000;
 }
 
 
@@ -386,7 +458,6 @@ p {
 
 body {
     font-family: var(--fontsecondary);
-    line-height: 1.5rem;
 }
 
 /*RESPONSIVE*/
