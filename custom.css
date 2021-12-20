@@ -1,0 +1,40 @@
+/*
+    Custom.css is place where we put custom css for this specific website
+*/
+
+/*
+    CSS variables
+*/
+:root {
+    --yellow: #FFD977;
+    --brown: #ba400e;
+    --orange: #ffc4a1;
+    --green: #f0f9f9;
+    --lightorange: #ffc4a1;
+    --white: #FFFFFF;
+
+    /*frank ruhl libre*/
+    --fontprimary: 'Frank Ruhl Libre', serif;
+    /*roboto*/
+    --fontsecondary: 'Roboto', sans-serif;
+}
+
+body {
+    font-family: var(--fontsecondary);
+}
+
+/*
+    RESPONSIVE
+*/
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 37.5em) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}

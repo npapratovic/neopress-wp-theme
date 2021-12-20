@@ -10,4 +10,5 @@ helper funkcije staviti u functions.php https://github.com/Automattic/_s/blob/ma
 
 Changelog:
 
+- typography and grid fixes, introducing custom.css 20/12/2021
 - renamed to neopress-wp-theme 09/12/2021

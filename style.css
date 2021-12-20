@@ -5,7 +5,7 @@ Author: Nikola Papratovic
 Author URI: https://neomedia.hr/
 Description: neopress starter wp theme for websites and webshops
 Tags: responsive, starter wp theme
-Version: 0.2-alpha
+Version: 0.3-alpha
 Requires at least: 5.0
 Tested up to: 5.4
 Requires PHP: 7.0
@@ -22,8 +22,10 @@ table of contents:
 2) GRID SYSTEM
 3) HELPERS
 4) TYPOGRAPHY
-5) CUSTOM STYLES FOR THIS PROJECT
-6) RESPONSIVE
+5) CUSTOM STYLES FOR THIS PROJECT ARE IN custom.css file
+6) RESPONSIVE MEDIA QUERIES (for style.css - custom.css also has its own responsive media queries)
+
+Style.css is something like universal CSS for all websites, and custom.css is place where we put custom css for this specific website
 
 */
 /*
@@ -432,32 +434,6 @@ p {
     font-size: 18px;
     line-height: 1.8;
     color: #000;
-}
-
-
-/*CUSTOM STYLES FOR THIS PROJECT*/
-/*koristimo css varijable*/
-:root {
-    --yellow: #FFD977;
-
-    --brown: #ba400e;
-
-    --orange: #ffc4a1;
-
-    --green: #f0f9f9;
-
-    --lightorange: #ffc4a1;
-
-    --white: #FFFFFF;
-
-    /*frank ruhl libre*/
-    --fontprimary: 'Frank Ruhl Libre', serif;
-    /*roboto*/
-    --fontsecondary: 'Roboto', sans-serif;
-}
-
-body {
-    font-family: var(--fontsecondary);
 }
 
 /*RESPONSIVE*/
