@@ -9,6 +9,8 @@ Pick the one you need and place it in functions.php
  TABLE OF CONTENTS:
 
 1) disable comments
+2) custom fee on woocommerce checkout
+3) attach pdf to order email 
  */
 
 /*===================================================*/
@@ -62,3 +64,59 @@ add_action('wp_before_admin_bar_render', function() {
 
 
 /*===================================================*/
+
+/*===================================================*/
+/* 2) add cusotm fee on woocommerce checkout */
+
+// Add a custom fee (fixed cart subtotal) by payment
+add_action( 'woocommerce_cart_calculate_fees', 'custom_handling_fee' );
+function custom_handling_fee ( $cart ) {
+    if ( is_admin() && ! defined( 'DOING_AJAX' ) )
+        return;
+
+    $chosen_payment_id = WC()->session->get('chosen_payment_method');
+
+    if ( empty( $chosen_payment_id ) )
+        return;
+
+    $subtotal = $cart->subtotal;
+
+    // SETTINGS: Here set in the array the (payment Id) / (fee cost) pairs
+    $targeted_payment_ids = array(
+        'cod' => 8, // Fixed fee 
+    );
+
+    // Loop through defined payment Ids array
+    foreach ( $targeted_payment_ids as $payment_id => $fee_cost ) {
+        if ( $chosen_payment_id === $payment_id ) {
+            $cart->add_fee( __('Naknada za manipulativne troškove za plaćanje gotovinom (plaća se dostavnoj službi):', 'woocommerce'), $fee_cost, true );
+        }
+    }
+}
+
+// jQuery - Update checkout on payment method change
+add_action( 'woocommerce_checkout_init', 'payment_methods_refresh_checkout' );
+function payment_methods_refresh_checkout() {
+    wc_enqueue_js( "jQuery( function($){
+        $('form.checkout').on('change', 'input[name=payment_method]', function(){
+            $(document.body).trigger('update_checkout');
+        });
+    });");
+}
+
+/*===================================================*/
+
+/*===================================================*/
+
+/* 3) attach pdf to order email */
+
+add_filter( 'woocommerce_email_attachments', 'attach_terms_conditions_pdf_to_email', 10, 3);
+
+function attach_terms_conditions_pdf_to_email ( $attachments , $id, $object ) {
+	$your_pdf_path = get_template_directory() . '/uvjeti.pdf';
+	$attachments[] = $your_pdf_path;
+	return $attachments;
+}
+
+/*===================================================*/
+
