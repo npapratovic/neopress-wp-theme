@@ -6,6 +6,7 @@ template structure:
 helper funkcije staviti u functions.php https://github.com/Automattic/_s/blob/master/inc/woocommerce.php kao primjerice ove
 - dodati i za dizejblanje komentara..
 - koristiti css varijable, kasnije možda sass?
+- dodatan inspiracija za starter theme: https://github.com/billerickson/EA-Starter ima puno korisnik funkcija
 
 
 Changelog:
