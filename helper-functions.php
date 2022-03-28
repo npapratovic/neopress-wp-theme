@@ -11,7 +11,9 @@ Pick the one you need and place it in functions.php
 1) disable comments
 2) custom fee on woocommerce checkout
 3) attach pdf to order email 
- */
+4) add (google adwords) conversion code only to thankyou page inside head tags 
+
+*/
 
 /*===================================================*/
 /* 1) disable comments */
@@ -116,6 +118,37 @@ function attach_terms_conditions_pdf_to_email ( $attachments , $id, $object ) {
 	$your_pdf_path = get_template_directory() . '/uvjeti.pdf';
 	$attachments[] = $your_pdf_path;
 	return $attachments;
+}
+
+/*===================================================*/
+
+
+/*===================================================*/
+
+/* 4) add (google adwords) conversion code only to thankyou page inside head tags */
+
+add_action( 'wp_head', 'my_google_conversion', 9000 );
+function my_google_conversion(){
+    // On Order received endpoint only
+    if( is_wc_endpoint_url( 'order-received' ) ) :
+
+    $order_id = absint( get_query_var('order-received') ); // Get order ID
+
+    if( get_post_type( $order_id ) !== 'shop_order' ) return; // Exit
+
+    $order = wc_get_order( $order_id ); // Get the WC_Order Object instance
+    ?>
+    <!-- Event snippet for Website traffic conversion page --> 
+    <script> 
+		gtag('event', 'conversion', {
+			'send_to': 'AW-1022397026/118rCK2Mz6wDEOKUwucD',
+		    'value': <?php echo $order->get_total(); ?>,
+            'currency': '<?php echo $order->get_currency(); ?>',
+            'transaction_id': '<?php echo $order_id; ?>'
+		}); 
+    </script>  
+    <?php   
+    endif;
 }
 
 /*===================================================*/
