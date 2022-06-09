@@ -12,6 +12,7 @@ Pick the one you need and place it in functions.php
 2) custom fee on woocommerce checkout
 3) attach pdf to order email 
 4) add (google adwords) conversion code only to thankyou page inside head tags 
+5) Create Buy Now Button dynamically after Add To Cart button 
 
 */
 
@@ -153,3 +154,31 @@ function my_google_conversion(){
 
 /*===================================================*/
 
+/*===================================================*/
+
+/* 5) Create Buy Now Button dynamically after Add To Cart button  */
+ 
+    function add_content_after_addtocart() {
+     
+        // get the current post/product ID
+        $current_product_id = get_the_ID();
+     
+        // get the product based on the ID
+        $product = wc_get_product( $current_product_id );
+     
+        // get the "Checkout Page" URL
+        $checkout_url = WC()->cart->get_checkout_url();
+     
+        // run only on simple products
+        if( $product->is_type( 'simple' ) ){
+            echo '<div class="clear-sec">';
+            echo '</div>';
+            echo '<a href="'.$checkout_url.'?add-to-cart='.$current_product_id.'" class="buy-now button" style="    width: 240px;
+    background: #04AA6D;
+    text-align: center;">Kupi odmah</a>';
+            //echo '<a href="'.$checkout_url.'" class="buy-now button">Kupi odmah</a>';
+        }
+    }
+    add_action( 'woocommerce_after_add_to_cart_button', 'add_content_after_addtocart' );
+
+/*===================================================*/
