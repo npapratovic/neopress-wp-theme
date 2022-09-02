@@ -13,6 +13,7 @@ Pick the one you need and place it in functions.php
 3) attach pdf to order email 
 4) add (google adwords) conversion code only to thankyou page inside head tags 
 5) Create Buy Now Button dynamically after Add To Cart button 
+6) Hide ALL shipping rates in ALL zones when Free Shipping is available
 
 */
 
