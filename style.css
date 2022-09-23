@@ -337,8 +337,7 @@ svg:not(:root) {
 }
 
 /* TYPOGRAPHY */
-/*radimo best-practice kod fontova, podesimo osnoven vrijednosti, zatim sa rem veličinama podešavamo odnose,
-no kasnije u custom css-u možemo podesiti specifične veličine fontova ili odnosa*/
+/* only best practice for fonts, font-sizes, and other properties. Sizes are defined with rems, and later can be overwritten in custom CSS for specific case*/
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
@@ -437,7 +436,7 @@ p {
 }
 
 /*RESPONSIVE*/
-/*radimo mobile-first kod, tako da kasnije pišemo css samo za razlike na većim rezolucijama*/
+/* we are doing mobile-first CSS, bellow are only tablet, laptop and desktop specific CSS properties*/
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 37.5em) {}
 
