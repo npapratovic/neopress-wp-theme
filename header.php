@@ -3,7 +3,12 @@
 <head>
 
     <meta charset="<?php bloginfo( 'charset' ); ?>" />
-    <title><?php wp_title(); ?> | <?php bloginfo( 'description' ); ?> </title>
+    <title>
+        <?php if(is_front_page() || is_home()){
+			echo get_bloginfo('name');
+		} else{
+			echo wp_title('');
+		}?> | <?php bloginfo( 'description' ); ?> </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="<?php bloginfo('description'); ?>" />
     <link rel="icon" type="image/x-icon" href="/img/i-fis-favicon.png">
