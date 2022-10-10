@@ -13,7 +13,20 @@ function load_assets () {
 }
 
 add_action( 'wp_enqueue_scripts', 'load_assets ' );
+function neowptheme_gutenberg_setup() {
+    add_theme_support( 'title-tag' );
 
+// Support Featured Images
+    add_theme_support( 'post-thumbnails');
+
+//Gutenberg
+    add_theme_support( 'align-wide' );
+    add_theme_support('editor-styles');
+    add_theme_support('wp-block-styles');
+    add_theme_support( 'dark-editor-style' );
+    add_theme_support( 'responsive-embeds' );
+}
+add_action( 'after_setup_theme', 'neowptheme_gutenberg_setup' );
 /* Menus setup
 */
 function register_menus() {
